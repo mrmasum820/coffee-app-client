@@ -8,21 +8,39 @@ import {
 } from "react-router-dom";
 import AddCoffee from './components/AddCoffee.jsx';
 import UpdateCoffee from './components/UpdateCoffee.jsx';
+import Main from './Layout/Main.jsx';
+import ViewCoffee from './components/ViewCoffee.jsx';
+import NotFound from './components/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>,
-    loader: () => fetch('http://localhost:5000/coffee')
-  },
-  {
-    path: '/addCoffee',
-    element: <AddCoffee></AddCoffee>
-  },
-  {
-    path: '/updateCoffee/:id',
-    element: <UpdateCoffee></UpdateCoffee>,
-    loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <App></App>,
+        loader: () => fetch('https://coffee-app-server-production.up.railway.app/coffee')
+      },
+      {
+        path: '/addCoffee',
+        element: <AddCoffee></AddCoffee>
+      },
+      {
+        path: '/viewCoffee/:id',
+        element: <ViewCoffee></ViewCoffee>,
+        loader: ({ params }) => fetch(`https://coffee-app-server-production.up.railway.app/coffee/${params.id}`)
+      },
+      {
+        path: '/updateCoffee/:id',
+        element: <UpdateCoffee></UpdateCoffee>,
+        loader: ({ params }) => fetch(`https://coffee-app-server-production.up.railway.app/coffee/${params.id}`)
+      },
+      {
+        path: '*',
+        element: <NotFound></NotFound>
+      }
+    ]
   }
 ]);
 

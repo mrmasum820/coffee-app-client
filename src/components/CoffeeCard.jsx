@@ -18,7 +18,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/coffee/${_id}`, {
+                fetch(`https://coffee-app-server-production.up.railway.app/coffee/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -51,7 +51,9 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
 
                 <div className="card-actions justify-end">
                     <div className="btn-group btn-group-vertical space-y-4">
-                        <button className="btn">view</button>
+                        <Link to={`/viewCoffee/${_id}`}>
+                            <button className="btn">view</button>
+                        </Link>
                         <Link to={`/updateCoffee/${_id}`}>
                             <button className="btn">edit</button>
                         </Link>

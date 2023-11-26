@@ -1,4 +1,5 @@
-import { useLoaderData } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -22,7 +23,7 @@ const UpdateCoffee = () => {
         console.log(updatedCoffee);
 
         //send data to the server
-        fetch(`http://localhost:5000/coffee/${_id}`, {
+        fetch(`https://coffee-app-server-production.up.railway.app/coffee/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -45,8 +46,9 @@ const UpdateCoffee = () => {
     }
 
     return (
-        <div className="bg-[#F4F3F0] p-24">
-            <h2 className="text-3xl font-extrabold">Update a Coffee {name}</h2>
+        <div className="py-10 max-w-screen-lg mx-auto p-4">
+            <Link to="/" className="flex items-center"><FaArrowLeft /><h3>Back to home</h3></Link>
+            <h2 className="text-3xl font-extrabold mt-8">Update a Coffee {name}</h2>
             <form onSubmit={handleUpdate}>
                 {/* form name and qunatity row */}
                 <div className="md:flex my-8">
@@ -58,7 +60,7 @@ const UpdateCoffee = () => {
                             <input type="text" name="name" defaultValue={name} placeholder="coffee name" className="input input-bordered w-full" />
                         </label>
                     </div>
-                    <div className="form-control md:w-1/2 ml-4">
+                    <div className="form-control md:w-1/2 md:ml-4">
                         <label className="label ">
                             <span className="label-text">Available Quantity</span>
                         </label>
@@ -77,7 +79,7 @@ const UpdateCoffee = () => {
                             <input type="text" name="supplier" defaultValue={supplier} placeholder="supplier name" className="input input-bordered w-full" />
                         </label>
                     </div>
-                    <div className="form-control md:w-1/2 ml-4">
+                    <div className="form-control md:w-1/2 md:ml-4">
                         <label className="label ">
                             <span className="label-text">Taste</span>
                         </label>
@@ -96,7 +98,7 @@ const UpdateCoffee = () => {
                             <input type="text" name="category" defaultValue={category} placeholder="Category" className="input input-bordered w-full" />
                         </label>
                     </div>
-                    <div className="form-control md:w-1/2 ml-4">
+                    <div className="form-control md:w-1/2 md:ml-4">
                         <label className="label ">
                             <span className="label-text">Details</span>
                         </label>

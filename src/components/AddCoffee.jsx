@@ -18,7 +18,7 @@ const AddCoffee = () => {
         console.log(newCoffee);
 
         //send to the server
-        fetch('http://localhost:5000/coffee', {
+        fetch('https://coffee-app-server-production.up.railway.app/coffee', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

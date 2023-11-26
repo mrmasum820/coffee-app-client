@@ -1,25 +1,17 @@
-import { useLoaderData } from 'react-router-dom'
-import './App.css'
-import CoffeeCard from './components/CoffeeCard'
-import { useState } from 'react'
+import Hero from './components/Hero'
+import HeroStat from './components/HeroStat'
+import PopularProducts from './components/PopularProducts'
+import Follow from './components/Follow'
 
 function App() {
-  const loadedCoffees = useLoaderData()
-  const [coffees, setCoffees] = useState(loadedCoffees)
+
 
   return (
-    <div className='m-20'>
-      <h1 className='text-5xl text-purple-400 text-center my-8'>Our popular coffees: {coffees.length}</h1>
-      <div className='grid md:grid-cols-2 gap-4'>
-        {
-          coffees.map(coffee => <CoffeeCard
-            key={coffee._id}
-            coffee={coffee}
-            coffees={coffees}
-            setCoffees={setCoffees}
-          ></CoffeeCard>)
-        }
-      </div>
+    <div>
+      <Hero></Hero>
+      <HeroStat></HeroStat>
+      <PopularProducts></PopularProducts>
+      <Follow></Follow>
     </div>
   )
 }
